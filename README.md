@@ -5,7 +5,7 @@
 
 ## Встановлення
 ### Windows
-1. Встановість прогграмму на ваш пристрій[посиланням](https://drive.google.com/file/d/1whU2-Kc7EvQnrcPaZk9RCXeD56dOyn6A/view?usp=sharing)
+1. Встановість программу на ваш пристрій [посиланням](https://drive.google.com/file/d/1whU2-Kc7EvQnrcPaZk9RCXeD56dOyn6A/view?usp=sharing)
 2. Запустіть main.exe 
 ### Linux/MacOS
 1. Встановість Docker:
