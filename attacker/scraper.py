@@ -9,21 +9,21 @@ class Scraper:
         self.scraper = cloudscraper.create_scraper(
             browser={'browser': 'firefox', 'platform': 'android', 'mobile': True}
         )
-        self.proxies: iter = self._parse_proxies()
+        self.proxies: iter = iter(DEFAULT_PROXIES)
 
-    def _parse_proxies(self) -> iter:
-        proxies = []
-        self.update_headers()
-        for host in HOSTS:
-            try:
-                resp = self.scraper.get(host, timeout=5)
-                proxies.extend(resp.json()['proxy'])
-                resp.close()
-            except Exception:
-                pass
-        if len(proxies) == 0:
-            proxies = DEFAULT_PROXIES
-        return iter(proxies)
+    # def _parse_proxies(self) -> iter:
+    #     proxies = []
+    #     self.update_headers()
+    #     for host in HOSTS:
+    #         try:
+    #             resp = self.scraper.get(host, timeout=5)
+    #             proxies.extend(resp.json()['proxy'])
+    #             resp.close()
+    #         except Exception:
+    #             pass
+    #     if len(proxies) == 0:
+    #         proxies = DEFAULT_PROXIES
+    #     return iter(proxies)
 
     def update_headers(self, headers: dict = None):
         self.scraper.headers.update(

