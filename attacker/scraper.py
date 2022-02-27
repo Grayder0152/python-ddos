@@ -49,5 +49,5 @@ class Scraper:
         self.scraper.proxies.update({'http': proxy_url, 'https': proxy_url})
 
     def send_request_to_site(self, site_url: str):
-        response = self.scraper.get(site_url)
+        response = self.scraper.get(site_url, timeout=10)
         return response
