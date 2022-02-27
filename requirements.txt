@@ -1,0 +1,11 @@
+certifi==2021.10.8
+charset-normalizer==2.0.12
+cloudscraper==1.2.58
+idna==3.3
+loguru==0.6.0
+pyparsing==3.0.7
+pyuseragents==1.0.5
+requests==2.27.1
+requests-toolbelt==0.9.1
+urllib3==1.26.8
+click~=8.0.4
