@@ -5,8 +5,8 @@
 
 ## Встановлення
 ### Windows
-1. Встановість Docker на ваш ПК за [посиланням](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe);\
-
+1. Встановість прогграмму на ваш пристрій[посиланням](https://drive.google.com/file/d/1whU2-Kc7EvQnrcPaZk9RCXeD56dOyn6A/view?usp=sharing)
+2. Запустіть main.exe 
 ### Linux/MacOS
 1. Встановість Docker:
 ```
