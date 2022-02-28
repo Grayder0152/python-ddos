@@ -15,7 +15,7 @@
 ```
 2. Закачайте собі локально мій docker-образ:
 ```
- docker pull grayder/python-ddos:ddos
+ docker pull grayder/python-ddos -a
 ```
 3. Запустіть контейнер:
 ```
