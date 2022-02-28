@@ -1,52 +1,45 @@
 # python-ddos
 *beta version* 	
 
-Програма для DDOS-атаки на пропагандистські російскі сайти.
+Program for DDOS-attacks on Russian propaganda sites.
 
-## Встановлення
+## Installation
 ### Windows
-1. Встановість программу на ваш пристрій [посиланням](https://drive.google.com/file/d/1whU2-Kc7EvQnrcPaZk9RCXeD56dOyn6A/view?usp=sharing)
-2. Запустіть main.exe 
-### Linux/MacOS
-1. Встановість Docker:
+#### [Install Docker on your PC](https://docs.docker.com/engine/install/)
+#### Pull docker image locally:
 ```
- sudo apt-get update
- sudo apt-get install docker-ce docker-ce-cli containerd.io
+ docker pull grayder/python-ddos:ddos
 ```
-2. Закачайте собі локально мій docker-образ:
-```
- docker pull grayder/python-ddos -a
-```
-3. Запустіть контейнер:
+#### Launch the container:
 ```
  docker run --rm grayder/python-ddos:ddos
 ```
-За замовчуванням скрипт працює в 200 потоків та із ввімкнутим логуванням.\
-Якщо ви хочете змінити кількість потоків або вимкнути логування, виконайте наступну команду:
+##### By default, the script runs in 200 streams and with logging enabled.
+##### If you want to change the number of threads or disable logging, run the following command:
+#
+#
 ```
  docker run --rm grayder/python-ddos:ddos -t 1000 -wl
 ```
--t N - програма буде працювати в N потоків;\
--wl - програма буде працювати без логування;
-  
-Якщо ви хочете використати свій файл сайтів(файл формату .txt, в якому кожне посилання на сайт починається з нового рядка) виконайте наступну команду:
+##### -t N - the program will run in N streams;
+##### -wl - the program will work without logging;
+
+#
+#
+#
+#### use your own site list
  
 ```
- docker run --rm -v <Повний шлях до вашого файлу>:/app/site_for_attack.txt grayder/python-ddos:ddos
+ docker run --rm -v <full file path>:/app/site_for_attack.txt grayder/python-ddos:ddos
 ```
 
-### Для прохаваних
-
-1) Клонуйте цей проєкт собі:
+### Pure python approach
 ```
  git clone https://github.com/Grayder0152/python-ddos.git
 ```
-2) Встановіть залежності:
 ```
  pip install -r requirements.txt
 ```
-3) Запустіть програму:
 ```
   python3 main.py
 ```
- Думаю, далі самі розберетесь :)
